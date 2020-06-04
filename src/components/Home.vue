@@ -79,7 +79,12 @@
                   </div>
                 </el-main>
                 <el-header>
-                  <span class="recipe-title">{{item.info.recipe_name}}</span>
+                <!-- <span class = "recipe-title">{{item.info.recipe_name}}</span> -->
+                 <!-- <span class="recipe-title" @click="itemClick">{{item.info.recipe_name}}</span> -->
+                <span class = "recipe-title">
+                  <router-link :to="{path:'./foodPage',query:{id:item.info}}">
+                            {{item.info.recipe_name}}
+                            </router-link></span>
                 </el-header>
                 <el-footer class="recipe-ranks">
                   <div class="recipe-like">
@@ -100,6 +105,7 @@
 </template>
 
 <script>
+// import foodPage from './foodPage'
 import VueGridLayout from 'vue-grid-layout'
 var recipeLayout = []
 
@@ -185,7 +191,7 @@ export default {
         return
       }
       console.log('call auto suggest')
-      let uriEncoded = encodeURI('http://localhost:7777/collections/recipe/auto_suggestion?q=' + this.keyword)
+      let uriEncoded = encodeURI('http://47.98.241.147:7777/collections/recipe/auto_suggestion?q=' + this.keyword)
       this.$http.get(uriEncoded).then(function (res) {
         console.log(res.body.suggestions)
         this.suggest_items = res.body.suggestions
@@ -194,7 +200,7 @@ export default {
     do_search: function () {
       var searchContent = `{"query": "${this.keyword}","query by": ["recipe_name","context"]}`
       console.log(searchContent)
-      this.$http.post('http://localhost:7777/collections/recipe/documents', searchContent).then(function (res) {
+      this.$http.post('http://47.98.241.147:7777/collections/recipe/documents', searchContent).then(function (res) {
         recipeLayout = []
         let hits = res.body.hits
         for (let i = 0; i < hits.length; i++) {
@@ -227,7 +233,7 @@ export default {
         }
         this.find_search_toggle = false
         this.layout = recipeLayout
-        // console.log(this.layout)
+        console.log(this.layout)
       })
     },
     clear_input: function () {
@@ -266,6 +272,10 @@ export default {
     do_recommendation: function () {
       this.find_search_toggle = true
     }
+    // itemClick:function() {
+    //    this.$router.push('/foodPage');
+    //    console.log(this.info)
+    // }
   }
 }
 
