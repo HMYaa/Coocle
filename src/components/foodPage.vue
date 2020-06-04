@@ -21,7 +21,7 @@
             disabled
             show-score
             text-color="#ff9900"
-            score-template="id.rate"
+            score-template="{value}"
           ></el-rate>
         </div>
         <div class="like-numbers">
@@ -100,18 +100,6 @@
 </template>
 
 <script>
-import imgCover from '../assets/cover.jpeg'
-import img1 from '../assets/1.jpeg'
-import img2 from '../assets/2.jpeg'
-import img3 from '../assets/3.jpeg'
-import img4 from '../assets/4.jpeg'
-import img5 from '../assets/5.jpeg'
-import img6 from '../assets/6.jpeg'
-import img7 from '../assets/7.jpeg'
-import img8 from '../assets/8.jpeg'
-import img9 from '../assets/9.jpeg'
-import img10 from '../assets/10.jpeg'
-import img11 from '../assets/11.jpeg'
 export default {
   name: 'HelloWorld',
   sites: [],
@@ -132,87 +120,7 @@ export default {
   },
   data () {
     return {
-      srcList: [],
-      value: 5,
-      favorite: 5000,
-      cover: imgCover,
-      title: '虾仁炒西兰花',
-      urls: [
-        { url: img1, step: '将鲜虾洗净，拨壳、去虾线' },
-        {
-          url: img2,
-          step: '在拨好的虾仁中加入适量胡椒粉，料酒、味极鲜酱油腌制片刻'
-        },
-        { url: img3, step: '将西兰花、胡萝卜洗净，切块' },
-        {
-          url: img4,
-          step:
-            '准备一锅清水，放入切好的西兰花，加入适量盐，色拉油，开大火煮开（这样能使西兰花保持翠绿颜色)'
-        },
-        { url: img5, step: '煮至西兰花变色，捞出沥干水分；' },
-        {
-          url: img6,
-          step: '热锅倒油，加入大蒜末，腌制好的虾仁，煸炒至金黄色；'
-        },
-        { url: img7, step: '加入切好的胡萝卜片翻炒一下；' },
-        { url: img8, step: '加入焯熟的西兰花；' },
-        { url: img9, step: '加入适量盐、糖，翻炒片刻即可出锅！' },
-        { url: img10, step: '成品；' },
-        { url: img11, step: '成品2' }
-      ],
-      stepdecs: [
-        { step: '将鲜虾洗净，拨壳、去虾线' },
-        { step: '在拨好的虾仁中加入适量胡椒粉，料酒、味极鲜酱油腌制片刻' },
-        { step: '将西兰花、胡萝卜洗净，切块' },
-        {
-          step:
-            '准备一锅清水，放入切好的西兰花，加入适量盐，色拉油，开大火煮开（这样能使西兰花保持翠绿颜色)'
-        }
-      ],
-      tableData: [
-        {
-          material: '西兰花',
-          amount: '1颗'
-        },
-        {
-          material: '胡萝卜',
-          amount: '半个'
-        },
-        {
-          material: '胡椒粉',
-          amount: '适量'
-        },
-        {
-          material: '盐',
-          amount: '适量'
-        },
-        {
-          material: '糖',
-          amount: '一小勺'
-        },
-        {
-          material: '鲜虾',
-          amount: '150g'
-        },
-        {
-          material: '料酒',
-          amount: '适量'
-        },
-        {
-          material: '味极鲜酱油',
-          amount: '适量'
-        },
-        {
-          material: '油',
-          amount: '适量'
-        },
-        {
-          material: '大蒜',
-          amount: '2瓣'
-        }
-      ],
-      tips:
-        '做菜好吃都有技巧，我的每道菜都有小妙招，大家搜索“豆果”可以直接查看我的菜谱！'
+      srcList: []
     }
   }
 }
