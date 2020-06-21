@@ -8,7 +8,7 @@
       </div>
       <div class="header-menu" id="search-menu">
         <i class="fa fa-dot-circle-o"></i>
-        <span>搜索</span>
+        <span><router-link :to="{path:'./'}">搜索</router-link></span>
       </div>
     </header>
     <el-container class="el-container-style">
@@ -30,7 +30,7 @@
           </i>
         </div>
       </el-main>
-      <el-main>
+      <el-main class = "text">
         <!-- <p>虾仁炒西兰花的营养成分高，而且十分全面，主要包括蛋白质、碳水化合物、脂肪、矿物质、维生素C和胡萝卜素等！</p> -->
         <p>{{id.context}}</p>
       </el-main>
@@ -49,8 +49,8 @@
           element-loading-spinner="el-icon-loading"
           element-loading-background="rgba(0, 0, 0, 0.8)"
         >
-          <el-table-column prop="note" label="用料" width="300"></el-table-column>
-          <el-table-column prop="title" label="用量" width="300"></el-table-column>
+          <el-table-column prop="title" label="用料" width="300"></el-table-column>
+          <el-table-column prop="note" label="用量" width="300"></el-table-column>
         </el-table>
       </el-main>
     </el-container>
@@ -75,7 +75,7 @@
                 </div>
               </el-col>
               <el-col :span="8" :offset="0">
-                <div class="grid-content bg-color bg-size to-left">
+                <div class="grid-content bg-color bg-size to-leftl">
                   <strong class="strong-align">步骤{{index+1}}</strong>
                   <p class="left-align">{{item.content}}</p>
                 </div>
@@ -83,14 +83,14 @@
             </div>
           </el-row>
         </div>
-        <!-- 食品用料列表 -->
+        <!-- 食品用料列表 --> 
       </el-main>
     </el-container>
-    <el-container>
+    <el-container v-show = "has_tip">
       <el-header>
         <h2>{{id.recipe_name}}的烹饪技巧</h2>
       </el-header>
-      <el-main>
+      <el-main class = "text">
         <p>{{id.tips}}</p>
       </el-main>
     </el-container>
@@ -115,12 +115,15 @@ export default {
     for (let i = 0; i < this.id.steps.length; i++) {
       imgstr.push(this.id.steps[i].image)
     }
+    if (this.id.tips === '') this.has_tip = false
+
     this.srcList = imgstr
     console.log(this.srcList)
   },
   data () {
     return {
-      srcList: []
+      srcList: [],
+      has_tip: true
     }
   }
 }
@@ -269,23 +272,31 @@ export default {
 .tip > p {
   text-align: left;
 }
+.text > p{
+   width:70%;
+   margin:auto;
+}
 
 .like-numbers {
   display: inline-block;
   margin-top: 5px;
-  padding-left: 130px;
+  padding-left: 70px;
 }
-.like-numbers {
+
+.like-numbers i{
   color: #d8345f;
 }
+
 .rate-numbers {
   display: inline-block;
   margin-top: 5px;
-  padding-right: 200px;
+  padding-right: 70px;
 }
+
 .to-left {
   text-align: left;
 }
+
 </style>
 
 <style>
@@ -332,5 +343,14 @@ export default {
 }
 .el-rate-left {
   display: block;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.router-link-active {
+    text-decoration: none;
 }
 </style>

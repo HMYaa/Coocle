@@ -83,7 +83,7 @@
                  <!-- <span class="recipe-title" @click="itemClick">{{item.info.recipe_name}}</span> -->
                 <span class = "recipe-title">
                   <router-link :to="{path:'./foodPage',query:{id:item.info}}">
-                            {{item.info.recipe_name}}
+                            <el-link href="https://element.eleme.io" target="_blank" style="font-size:17px;">{{item.info.recipe_name}}</el-link>
                             </router-link></span>
                 </el-header>
                 <el-footer class="recipe-ranks">
@@ -793,4 +793,13 @@ export default {
   transform: scaleX(0);
 }
 
+a {
+    text-decoration: none;
+    font-family:"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    line-height:1.5;
+}
+
+.router-link-active {
+    text-decoration: none;
+}
 </style>
