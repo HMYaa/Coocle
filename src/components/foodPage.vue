@@ -83,7 +83,6 @@
             </div>
           </el-row>
         </div>
-        <!-- 食品用料列表 --> 
       </el-main>
     </el-container>
     <el-container v-show = "has_tip">
